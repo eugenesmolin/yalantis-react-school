@@ -1,0 +1,41 @@
+:root {
+  // - - - - - FONTS - - - - - //
+  --Lato                : 'Lato', sans-serif;
+  --base-font-size      : 14px;
+  --base-font-color     : #283957;
+  --base-line-height    : 2;
+  --base-body-color     : #FFFFFF;
+
+  // - - - - - COLORS - - - - - //
+  --grey-darken-5       : #363636;
+  ////--grey-darken-1       : color;
+  //--grey                : #666666;
+  //--grey-lighten-1      : #919090;
+  //--grey-lighten-2      : #B4B4B4;
+  ////--grey-lighten-3      : color;
+  --grey-lighten-4      : #f6f6f6;
+  //--grey-lighten-5      : #ECECEC;
+  //--grey-lighten-6      : #F4F4F4;
+
+  --white               : #FFFFFF;
+  --white-overlay       : rgba(255, 255, 255, .8);
+
+  //--purple-darken-1     : #951865;
+  //--purple              : #BA0274;
+  //--purple-lighten-1    : #C16EA2;
+  //--purple-lighten-2    : #D6A6C4;
+  //--purple-lighten-3    : #F7DBED;
+  //--purple-lighten-4    : #F1DCE9;
+  //--purple-lighten-5    : #FEEDF8;
+  //--purple-lighten-6    : #FFF2FA;
+
+  --blue-darken-1       : #555D6B;
+  --blue-darken-3       : #283957;
+
+  // - - - - - COMPONENTS SIZES - - - - - //
+  --sidebar-width       : 256px;
+
+  // - - - - - TRANSITION - - - - - //
+  //--fade-duration       : .25s;
+  //--slide-duration      : .25s;
+}
