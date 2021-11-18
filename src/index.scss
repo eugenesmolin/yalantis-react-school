@@ -1,25 +1,12 @@
 /* - - - LIBS - - - */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* - - - BASE - - - */
 @import 'assets/styles/base/reboot';
 
 /* - - - COMMON - - - */
-@import 'assets/styles/common/fonts';
-@import 'assets/styles/common/vars';
-@import 'assets/styles/common/base';
-//@import 'assets/styles/common/text';
-//@import './common/common';
-//@import './common/spacing';
-//@import './common/line-height';
-//@import './common/animation';
-//@import './common/flex';
-//@import './common/toasted';
-//@import './common/cursor';
-//@import './common/scroll';
+@import 'assets/styles/general/fonts';
+@import 'assets/styles/general/vars';
+@import 'assets/styles/general/base';
+@import 'assets/styles/general/custom-scroll';
 
 /* - - - COMPONENTS - - - */
-@import 'assets/styles/components/buttons';
-@import 'assets/styles/components/fields';

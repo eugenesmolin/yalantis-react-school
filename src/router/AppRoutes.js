@@ -13,8 +13,9 @@ import NotFound from "pages/global/NotFound";
 const mainRoutes = [
   {
     path: "/",
+    exact: true,
     component: Users
-  }
+  },
 ];
 
 export default function AppRoutes() {

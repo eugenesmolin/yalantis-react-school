@@ -1,19 +1,17 @@
 .wrap {
-  position: relative;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .text {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
-  font-size: 46px;
+  font-size: 26px;
   font-weight: 600;
-  color: var(--grey-darken-5);
 
   &__num {
-    font-size: 86px;
+    font-size: 80px;
+    line-height: 1;
   }
 }
