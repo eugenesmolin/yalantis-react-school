@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-export default class Person {
+export default class Employ {
   constructor(person) {
     this.person = { ...person };
   }
@@ -10,13 +10,13 @@ export default class Person {
     return format(dobParse, "d MMMM',' Y 'year'");
   }
 
-  getPerson() {
+  getEmploy() {
     const { dob, ...person } = this.person;
 
     return {
       ...person,
       birthday: this.getBirthday(dob),
-      active: false
+      isActive: false
     };
   }
 }

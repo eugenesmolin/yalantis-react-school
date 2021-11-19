@@ -1,5 +1,5 @@
-import { users } from './modules/users';
+import { employees } from './modules/employees';
 
 export const api = {
-  users
+  employees
 };

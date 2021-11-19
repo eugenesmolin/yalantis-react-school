@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import users from './users';
+import employees from './employees';
 
 export default configureStore({
   reducer: {
-    users
+    employees
   }
 });

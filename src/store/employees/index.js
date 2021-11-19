@@ -1,54 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { thunks } from "./thunks";
 import { selectors } from "./selectors";
-import Person from "resources/User";
-import { alphabet } from "utils/constants";
+import Employ from "resources/Employ";
 
 const initialState = {
   list: [],
-  listByAlphabet: {},
   listStatus: 'idle',
 };
 
 const slice = createSlice({
-  name: 'users',
+  name: 'employees',
   initialState: { ...initialState },
   reducers: {
+
     RESET_STATE: () => initialState
   },
   extraReducers: (builder) => {
     builder
-      .addCase(thunks.getUsers.pending, (state) => {
+      .addCase(thunks.getEmployees.pending, (state) => {
         state.listStatus = 'pending';
       })
-      .addCase(thunks.getUsers.fulfilled, (state, { payload }) => {
+      .addCase(thunks.getEmployees.fulfilled, (state, { payload }) => {
         state.list = payload.map(user => {
-          const person = new Person(user);
-          return person.getPerson();
+          const person = new Employ(user);
+          return person.getEmploy();
         }).sort((a, b) => a.firstName.localeCompare(b.firstName));
-
-        const newAlphabet = alphabet.reduce((a, v) => ({ ...a, [v]: []}), {});
-
-        state.list.forEach(user => {
-          const letter = user.firstName.charAt(0).toLowerCase();
-          newAlphabet[letter].push(user);
-        })
-
-        state.listByAlphabet = newAlphabet;
 
         state.listStatus = 'success';
       })
-      .addCase(thunks.getUsers.rejected, (state) => {
+      .addCase(thunks.getEmployees.rejected, (state) => {
         state.listStatus = 'fail';
       });
   },
 });
 
-const users = {
+const employees = {
   actions: slice.actions,
   thunks,
   selectors,
 };
 
-export { users };
+export { employees };
 export default slice.reducer;

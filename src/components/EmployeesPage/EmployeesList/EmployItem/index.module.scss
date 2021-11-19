@@ -1,0 +1,17 @@
+.user {
+  &__name {
+    width: 100%;
+    font-weight: bold;
+  }
+
+  &__active {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    label {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
