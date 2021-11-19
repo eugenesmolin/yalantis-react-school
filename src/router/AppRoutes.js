@@ -5,7 +5,7 @@ import AppRoute from "./AppRoute";
 import MainLayout from "layouts/Main";
 
 // MAIN
-import Users from "pages/main/Employees";
+import Employees from "pages/main/Employees";
 
 // GLOBAL
 import NotFound from "pages/global/NotFound";
@@ -14,7 +14,7 @@ const mainRoutes = [
   {
     path: "/",
     exact: true,
-    component: Users
+    component: Employees
   },
 ];
 

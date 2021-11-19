@@ -1,18 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { thunks } from "./thunks";
 import { selectors } from "./selectors";
-import Employ from "resources/Employ";
+import Employee from "resources/Employee";
+import { employeesService } from "services/employees";
 
 const initialState = {
   list: [],
   listStatus: 'idle',
+  selectedListIds: employeesService.getEmployees()
 };
 
 const slice = createSlice({
   name: 'employees',
   initialState: { ...initialState },
   reducers: {
-
+    SELECT_EMPLOYEE: (state, { payload }) => {
+      const employee = state.list.find(employee => employee.id === payload);
+      if (employee) {
+        employee.isActive = true;
+        state.selectedListIds.push(payload);
+        employeesService.setEmployees(state.selectedListIds)
+      }
+    },
+    UNSELECT_EMPLOYEE: (state, { payload }) => {
+      const employee = state.list.find(employee => employee.id === payload);
+      if (employee) {
+        employee.isActive = false;
+        state.selectedListIds = state.selectedListIds.filter(id => id !== payload);
+        employeesService.setEmployees(state.selectedListIds)
+      }
+    },
     RESET_STATE: () => initialState
   },
   extraReducers: (builder) => {
@@ -21,10 +38,12 @@ const slice = createSlice({
         state.listStatus = 'pending';
       })
       .addCase(thunks.getEmployees.fulfilled, (state, { payload }) => {
-        state.list = payload.map(user => {
-          const person = new Employ(user);
-          return person.getEmploy();
-        }).sort((a, b) => a.firstName.localeCompare(b.firstName));
+        const selectedListIds = state.selectedListIds;
+
+        state.list = payload.map(employee => {
+          const person = new Employee({ selectedListIds, employee });
+          return person.getEmployee();
+        });
 
         state.listStatus = 'success';
       })

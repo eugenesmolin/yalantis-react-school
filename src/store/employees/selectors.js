@@ -1,5 +1,10 @@
 const selectors = {
-  list: state => state.employees.list,
+  list: state => {
+    return [...state.employees.list].sort((a, b) => a.firstName.localeCompare(b.firstName))
+  },
+  sortedSelectedEmployees: state => {
+    return [...state.employees.list].sort((a, b) => a.lastName.localeCompare(b.lastName));
+  },
   listStatus: state => state.employees.listStatus,
 };
 
