@@ -34,14 +34,14 @@ function EmployeesList() {
 
   return (
     <div className={cn(styles.cards, 'custom-scroll')}>
-      {Object.entries(listByAlphabet).map(entry => (
-        <div key={entry[0]}>
+      {ALPHABET.map(letter => (
+        <div key={letter}>
           <div className={styles.title}>
-            {entry[0].toUpperCase()}
+            {letter.toUpperCase()}
           </div>
           <div>
-            {entry[1].length > 0 ? (
-              entry[1].map(user => (
+            {listByAlphabet[letter].length > 0 ? (
+              listByAlphabet[letter].map(user => (
                 <EmployeeItem
                   key={user.id}
                   {...user}

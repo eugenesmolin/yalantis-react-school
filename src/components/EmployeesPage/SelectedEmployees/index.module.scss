@@ -1,3 +1,21 @@
 .birthday {
-  padding-left: 16px;
+  padding: 0 16px;
+  overflow-y: scroll;
+  height: calc(100vh - var(--header-height) - 16px);
+}
+
+.month {
+  margin-bottom: 16px;
+}
+
+.title {
+  padding: 0 8px;
+  text-align: center;
+  background-color: rgba(204, 204, 204, 0.3);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.employee {
+  padding: 4px 8px;
 }

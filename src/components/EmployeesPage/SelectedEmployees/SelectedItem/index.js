@@ -8,7 +8,7 @@ function SelectedItem(
   }
 ) {
   return (
-    <div className={styles.selected}>
+    <div className={styles.employee}>
       <strong>{lastName} {firstName} - {birthday}</strong>
     </div>
   );

@@ -6,31 +6,40 @@ import { MONTHS } from "utils/constants";
 import cn from "classnames";
 import styles from "./index.module.scss";
 
+const monthsFromCurrent = [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 function SelectedEmployees() {
   const sortedSelectedEmployees = useSelector(employees.selectors.sortedSelectedEmployees);
 
   const employeesAreActive = useMemo(() => {
-    const activeList = sortedSelectedEmployees.filter(employee => employee.isActive);
+    const selectedEmployees = sortedSelectedEmployees.filter(employee => employee.isActive);
 
-    const newMonths = MONTHS.reduce((a, v) => ({ ...a, [v]: [] }), {});
+    const employees = {};
 
-    console.log(newMonths)
+    selectedEmployees.forEach(employee => {
+      const month = new Date(employee.dob).getMonth();
+      if (employees[month]?.length) employees[month].push(employee);
+      else employees[month] = [employee];
+    })
 
-    // listEmployees.forEach(employee => {
-    //   const letter = employee.firstName.charAt(0).toLowerCase();
-    //   newAlphabet[letter].push(employee);
-    // })
-    
-    return activeList;
+    return employees;
   }, [sortedSelectedEmployees]);
-
-  console.log(employeesAreActive)
 
   return (
     <div className={cn(styles.birthday, 'custom-scroll')}>
-      {employeesAreActive.length > 0 ? (
-        employeesAreActive.map(employee => (
-          <SelectedItem key={employee.id} {...employee}/>
+      {Object.keys(employeesAreActive).length > 0 ? (
+        monthsFromCurrent.map(month => (
+          <div
+            key={MONTHS[month]}
+            className={styles.month}
+          >
+            <div className={styles.title}>{MONTHS[month]}</div>
+            {employeesAreActive[month] ? employeesAreActive[month].map(employee => (
+              <SelectedItem key={employee.id} {...employee}/>
+            )) : (
+              <div className={styles.employee}>No Employees</div>
+            )}
+          </div>
         ))
       ) : (
         'Employees List is empty'
